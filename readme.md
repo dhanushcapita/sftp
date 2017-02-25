@@ -16,4 +16,4 @@ Secure File Transfer Protocol(SFTP) client and server samples using Node js
     -	Do the 'npm install' in both client and server folders  
     -	Start the server using 'node server/server.js'
     -	Start the client using 'node client/server.js' 
-    -   The file 'client/upload/upload.txt' will be copied to 'server/temp/upload.txt' while running client app
+    -   The file 'client/upload/upload.txt' will be uploaded to the 'server/temp/upload.txt' while running the client app
