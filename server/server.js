@@ -7,20 +7,20 @@ var server = new sftpServer({
     privateKeyFile: "ssh_host_rsa_key_private",
     // debug: true
 });
-console.warn("server started in port 8022");
+console.log("server started in port 8022");
 server.listen(8022);
 
 server.on("connect", function(auth) {
-  console.warn("Client attempted to connect");
+  console.log("Client attempted to connect");
   if (!(auth.username === "testuser" && auth.password === "Password")) {
-    console.warn("Authentication failed");
+    console.log("Authentication failed");
     return auth.reject();
   }
-  console.warn("Client connected");
+  console.log("Client connected");
   return auth.accept(function(session) {
     return session.on("writefile", function(path, readstream) {
-      console.warn("Client writing file");
-      var writestream = fs.createWriteStream("temp/upoload.txt");
+      console.log("Client writing file " + path);
+      var writestream = fs.createWriteStream(path);
       readstream.on("end",function() {console.log("Writefile request has come to an end!!!")});
       return readstream.pipe(writestream);
     });
